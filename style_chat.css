@@ -1,0 +1,85 @@
+/* Estilo Geral */
+* {
+    margin: 0;
+    padding: 0;
+    color: #EAD8B1;
+    background-color: #567189;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Navegação */
+nav {
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #001F3F;
+}
+
+h1 {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    flex: 1;
+}
+
+.cm {
+    max-width: 13rem;
+    display: block;
+}
+
+/* Conteúdo Principal */
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem;
+}
+
+.resumo,
+.intro {
+    background-color: #001F3F;
+    width: 20vw;
+    height: auto;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+    display: block;
+    margin: 0 auto;
+    width: 40vw;
+    height: auto;
+    background-color: #EAD8B1;
+    border-radius: 8px;
+}
+
+/* Lista de Autores */
+.ul {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #001F3F;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.ul ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+.ul li {
+    margin: 0.5rem 0;
+}
