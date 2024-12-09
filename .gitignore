@@ -1,0 +1,31 @@
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+.pnp/
+.pnp.js
+
+# TailwindCSS artifacts
+src/css/*.css.map
+src/css/*.css.tmp
+
+# Build artifacts
+public/css/*.css.map
+docs/css/*.css.map
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files (if any)
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.swp
+*.swo
