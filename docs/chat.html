@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relação entre velocidade inicial e deslocamento no MRUR</title>
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./media/colegiomoderno.svg" type="image/x-icon">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #001F3F, #3A6D8C);
+            color: #EAD8B1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        header {
+            background-color: #3A6D8C;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: #EAD8B1;
+        }
+
+        header img {
+            height: 80px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .left-side {
+            width: 60%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Right side (three images) */
+        .right-side {
+            position: absolute;
+            top: 25%;
+            left: 70%;
+            width: 22%;
+        }
+
+        .right-side img {
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Materiais Section */
+        .materiais-section {
+            background-color: #6A9AB0;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .materiais-section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #EAD8B1;
+        }
+
+        .materiais-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .materiais-list li {
+            margin-bottom: 10px;
+            color: #EAD8B1;
+        }
+
+        .card {
+            background-color: #6A9AB0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            text-align: center;
+            color: #EAD8B1;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #EAD8B1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+        }
+
+        .card:hover p {
+            overflow: auto;
+        }
+
+        .card:hover {
+            height: 220px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #3A6D8C;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            color: #EAD8B1;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #EAD8B1;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .footer {
+            background-color: #001F3F;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+
+        video{
+            height: 7rem;
+            margin: 2rem 2rem 2rem 1rem ;
+            transition: all .6s;
+            border-radius: 20px;
+        }
+
+        video:hover{
+            transform: scale(3);
+        }
+
+        .footer p {
+            margin: 0;
+            color: #EAD8B1;
+        }
+
+        .footer .authors {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .left-side {
+                width: 100%;
+                grid-template-columns: 1fr;
+            }
+
+            .right-side {
+                width: 100%;
+                position: relative;
+                margin-top: 20px;
+            }
+
+            .card {
+                height: auto;
+            }
+
+            .card:hover {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>COMO SE RELACIONA O ATRITO COM A VELOCIDADE INICIAL</h1>
+        <img src="./media/colegiomoderno.svg" alt="Logo da Escola">
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-container">
+            <!-- Left side (main content) -->
+            <div class="left-side">
+                <!-- Card for each section that opens a modal -->
+                <div class="card" onclick="openModal('modal-resumo')">
+                    <h2>Resumo</h2>
+                    <p>Investigação sobre a relação entre velocidade inicial e deslocamento em MRUR no plano horizontal.
+                    </p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-introducao')">
+                    <h2>Introdução</h2>
+                    <p>Exploração teórica e aplicações práticas do MRUR em superfícies horizontais com atrito.</p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-esquema')">
+                    <h2>Esquema de Montagem</h2>
+                    <p>Representação gráfica do sistema experimental, incluindo o troço horizontal, bloco e sensor de
+                        velocidade.</p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-procedimento')">
+                    <h2>Procedimento</h2>
+                    <p>O procedimento experimental teve como objetivo investigar a relação entre a velocidade inicial () e a distância
+                    percorrida () até à paragem de um bloco em movimento. Para tal, realizou-se um conjunto de medições cuidadosas,
+                    garantindo a precisão dos resultados e a análise rigorosa do movimento retilíneo uniformemente retardado.</p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-resultados')">
+                    <h2>Resultados Experimentais</h2>
+                    <p>Apresentação de dados obtidos: velocidade inicial e deslocamento em tabelas e gráficos.</p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-tratamento')">
+                    <h2>Tratamento dos Resultados</h2>
+                    <p>Detalhamento dos cálculos realizados para tratar os dados experimentais e obter as conclusões.
+                    </p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-discussao')">
+                    <h2>Discussão</h2>
+                    <p>Análise dos resultados, identificação de erros e interpretação dos gráficos.</p>
+                </div>
+
+                <div class="card" onclick="openModal('modal-conclusao')">
+                    <h2>Conclusão</h2>
+                    <p>Resumo dos resultados e conclusões sobre a relação entre a velocidade inicial e o deslocamento no
+                        MRUR.</p>
+                </div>
+            </div>
+
+            <!-- Right side (three images + materiais section) -->
+            <div class="right-side">
+                <img src="./media/WhatsApp Image 2024-12-12 at 00.43.35.jpeg" alt="Esquema do experimento 1">
+                <img src="./media/WhatsApp Image 2024-12-12 at 00.43.36 (1).jpeg" alt="Esquema do experimento 2">
+                <img src="./media/WhatsApp Image 2024-12-12 at 00.43.36.jpeg" alt="Esquema do experimento 3">
+
+                <!-- Materiais Section -->
+                <div class="materiais-section">
+                    <h2>Materiais</h2>
+                    <ul class="materiais-list">
+                        <li>Sensor de velocidade</li>
+                        <li>Rampa com inclinação ajustável</li>
+                        <li>Bloco de massa conhecida</li>
+                        <li>Fios e conectores para o sensor</li>
+                    </ul>
+                </div>
+
+                <div class="materiais-section">
+                    <a href="index.html">voltar a o menu inicial</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Overlay for all sections -->
+    <div class="modal-overlay" id="modal-resumo" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Resumo</h2>
+            <p>Neste trabalho, foi analisada a relação entre a velocidade inicial e o deslocamento de um objeto em movimento retilíneo
+            uniformemente retardado (MRUR), com especial enfoque na força de atrito. A presença do atrito entre o objeto e a
+            superfície horizontal desempenhou um papel crucial na desaceleração do movimento, sendo responsável pela diminuição
+            progressiva da velocidade. Através de medições precisas da velocidade e deslocamento, foi possível entender como o
+            atrito afeta o comportamento do movimento</p>
+        </div>
+    </div>
+
+    <!-- Outros modais de conteúdo (Introdução, Procedimento, etc) -->
+    <div class="modal-overlay" id="modal-introducao" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Introdução</h2>
+            <p>O Movimento Retilíneo Uniformemente Retardado (MRUR) é caracterizado por uma aceleração constante no sentido contrario ao movimento, o que resulta numa diminuição progressiva da velocidade do objeto ao longo do tempo. Esta desaceleração faz com que o objeto se mova em linha reta, mas sua velocidade diminua até eventualmente parar.
+
+Matematicamente, a relação entre o deslocamento    (Δ𝑥Δx) e a velocidade inicial (𝑣v 0​ ) no MRUR pode ser descrita pela equação 𝑣02=2𝑎Δ0​𝑎a. <br>
+Este tipo de movimento é frequentemente observado em diversas situações do cotidiano, como quando veículos freiam em uma estrada plana ou quando objetos deslizam sobre superfícies horizontais com atrito. Em ambas as situações, a força de atrito é um fator determinante na desaceleração do objeto, uma vez que essa força age contra o movimento, reduzindo sua velocidade até que o objeto pare. </p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-esquema" onclick="closeModal(event)">
+        <div style="display: flex;" class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2 style="position: absolute;">Esquema de Montagem</h2>
+            <img style="height: 20rem; border-radius: 20px; margin-right: 10%; margin-top: 10%;" src="./media/1000091224.jpg" alt="Esquema de montagem do experimento">
+            <p>A montagem experimental consistiu em uma rampa horizontal, com um sensor de velocidade posicionado ao final da rampa antes de o bloco pasar para o plano horizontal.
+            <br> O bloco de massa conhecida foi colocado na parte superior da rampa, e sua
+                velocidade foi medida enquanto ele começava o seu percurso no plano horizontal. A resistência ao movimento só era considerada durante o percurso no plano horizontal.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Procedimento -->
+    <div class="modal-overlay" id="modal-procedimento" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Procedimento</h2>
+            <p>Inicialmente, determinou-se a massa do bloco e o diâmetro do pino, registando-se os valores obtidos. <br> A célula fotoelétrica pocicionou-se no início do plano horizontal, perpendicular à calha, de forma a medir com
+            exatidão o tempo correspondente à passagem do pino, de seguida <br> o bloco foi colocado em diferentes alturas do plano inclinado e largado sem velocidade inicial. Ao atingir o plano horizontal, a célula fotoelétrica registou o intervalo de tempo () necessário para o pino atravessar o feixe de luz. Em seguida, mediu-se a distância percorrida pelo bloco (), desde o início do plano horizontal até ao ponto de paragem. Este processo foi repetido pelo menos três vezes para cada altura inicial, assegurando a fiabilidade dos valores médios obtidos e permitindo a análise das incertezas. </p>
+        </div>
+    </div>
+
+    <!-- Modal para Resultados Experimentais -->
+    <div class="modal-overlay" id="modal-resultados" onclick="closeModal(event)">
+        <div style="height: 75vh; width: 80vw; display: flex; overflow: visible;" style="display: flex;" class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2 style="position: absolute;">Resultados Experimentais</h2>
+            <p style="margin: 3rem 0 0 0;">Os resultados experimentais mostram uma clara relação entre a velocidade inicial e o deslocamento.</p>
+            <div style="margin-left: 8rem; width: 100%;"><video type="video/mp4" muted class="vid" loop autoplay src="/docs/media/anim/0001-0250.mp4"></video>
+            <video type="video/mp4" muted class="vid" loop autoplay src="/docs/media/anim/0001-0090.mp4"></video></div>
+            <div><video type="video/mp4" muted class="vid" loop autoplay src="/docs/media/anim/0001-0090 (1).mp4"></video>
+            <video type="video/mp4" muted class="vid" loop autoplay src="/docs/media/anim/new.mp4"></video>
+            <p>releção clara, enquanto menor a altura menor o deslocamento e menor a velocidade inicial</p></div>
+            <img style="position: absolute; height: 45%; top: 18rem; border-radius: 20px;" src="/docs/media/anim/WhatsApp Image 2024-12-11 at 23.39.50.jpeg" alt="">
+        </div>
+    </div>
+
+    <!-- Modal para Tratamento dos Resultados -->
+    <div class="modal-overlay" id="modal-tratamento" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Tratamento dos Resultados</h2>
+            <p>Os resultados experimentais foram analisados usando a equação de movimento para o MRUR. O deslocamento
+                foi calculado a partir das medições de tempo e velocidade. A aceleração foi determinada pela diferença
+                entre a velocidade inicial e a final dividida pelo tempo. O ajuste dos dados foi feito utilizando um
+                modelo teórico de MRUR, que proporcionou uma relação linear entre o tempo e o deslocamento ao quadrado.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal para Discussão -->
+    <div class="modal-overlay" id="modal-discussao" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Discussão</h2>
+            <p>A análise dos resultados experimentais indicou que houve um erro sistemático na medição da velocidade
+                devido ao atraso no sensor em algumas medições. Esse erro foi corrigido por meio de uma calibração
+                cuidadosa. Além disso, a resistência do ar e o atrito com a superfície da rampa afetaram o movimento,
+                causando uma desaceleração mais pronunciada do que a prevista teoricamente. A equação do MRUR foi
+                validada, mas com pequenas correções para o fator de atrito.</p>
+        </div>
+    </div>
+
+    <!-- Modal para Conclusão -->
+    <div class="modal-overlay" id="modal-conclusao" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">X</button>
+            <h2>Conclusão</h2>
+            <p>Os dados experimentais confirmam que a velocidade inicial tem uma influência direta sobre o deslocamento
+                em um MRUR, com maior velocidade inicial resultando em um deslocamento maior. Embora as condições
+                experimentais possam ter introduzido fontes de erro, as conclusões teóricas sobre o movimento retardado
+                foram validadas em grande parte pelos resultados obtidos. O experimento ilustra a aplicação de leis de
+                movimento em sistemas reais, como o estudo do atrito.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Todos os direitos reservados.</p>
+        <p class="authors">Desenvolvido por Tomás Rosado Hernández</p>
+    </footer>
+
+    <script>
+        // Função para abrir o modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        // Função para fechar o modal
+        function closeModal(event) {
+            if (event) {
+                if (event.target.classList.contains('modal-overlay')) {
+                    const modals = document.querySelectorAll('.modal-overlay');
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                }
+            } else {
+                const modals = document.querySelectorAll('.modal-overlay');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        }
+        
+    </script>
+
+</body>
+
+</html>
