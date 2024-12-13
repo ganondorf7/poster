@@ -178,6 +178,7 @@
             border: none;
         }
 
+
         .footer {
             background-color: #001F3F;
             width: 100%;
@@ -228,6 +229,15 @@
                 height: auto;
             }
         }
+        
+        .function:hover .fun {
+        display: block;
+        }
+        
+        .function .fun{
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -357,23 +367,25 @@ Este tipo de movimento é frequentemente observado em diversas situações do co
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModal()">X</button>
             <h2>Procedimento</h2>
-            <p>Inicialmente, determinou-se a massa do bloco e o diâmetro do pino, registando-se os valores obtidos. <br> A célula fotoelétrica pocicionou-se no início do plano horizontal, perpendicular à calha, de forma a medir com
-            exatidão o tempo correspondente à passagem do pino, de seguida <br> o bloco foi colocado em diferentes alturas do plano inclinado e largado sem velocidade inicial. Ao atingir o plano horizontal, a célula fotoelétrica registou o intervalo de tempo () necessário para o pino atravessar o feixe de luz. Em seguida, mediu-se a distância percorrida pelo bloco (), desde o início do plano horizontal até ao ponto de paragem. Este processo foi repetido pelo menos três vezes para cada altura inicial, assegurando a fiabilidade dos valores médios obtidos e permitindo a análise das incertezas. </p>
+            <p><H1>1-</H1>Inicialmente,determinou-se a massa do bloco e o diâmetro do pino, registando-se os valores obtidos. <br> <H1>2-</H1>A célula fotoelétrica pocicionou-se no início do plano horizontal, perpendicular à calha, de forma a medir com
+            exatidão o tempo correspondente à passagem do pino,<H1>3-</H1> De seguida o bloco foi colocado em diferentes alturas do plano inclinado e largado sem velocidade inicial.<H1>4-</H1> Ao atingir o plano horizontal,com a célula fotoelétrica registou-se o intervalo de tempo () necessário para o pino atravessar o feixe de luz. <H1>1-</H1> Em seguida, mediu-se a distância percorrida pelo bloco (), desde o início do plano horizontal até ao ponto de paragem. <br> *Este ultimo processo foi repetido pelo menos três vezes para cada altura inicial, assegurando a fiabilidade dos valores médios obtidos e permitindo a análise das incertezas. </p>
         </div>
     </div>
 
     <!-- Modal para Resultados Experimentais -->
     <div class="modal-overlay" id="modal-resultados" onclick="closeModal(event)">
-        <div style="height: 75vh; width: 80vw; display: flex; overflow: visible;" style="display: flex;" class="modal-content" onclick="event.stopPropagation()">
+        <div style="height: 75vh; width: 120vw; display: flex; overflow: visible;" style="display: flex;" class="modal-content" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModal()">X</button>
             <h2 style="position: absolute;">Resultados Experimentais</h2>
+            <div style="width: 120%;">
             <p style="margin: 3rem 0 0 0;">Os resultados experimentais mostram uma clara relação entre a velocidade inicial e o deslocamento.</p>
-            <div style="margin-left: 8rem; width: 100%;"><video type="video/mp4" muted class="vid" loop autoplay src="./media/anim/0001-0090 (1).mp4"></video>
+            <img style=" height: 70%; width: 150%; border-radius: 20px;" src="./media/WhatsApp Image 2024-12-11 at 23.39.50.jpeg" alt="">
+            </div>
+            <div style="width: 100%;"><video type="video/mp4" muted class="vid" loop autoplay src="./media/anim/0001-0090 (1).mp4"></video>
             <video type="video/mp4" muted class="vid" loop autoplay src="./media/anim/0001-0090.mp4"></video></div>
             <div><video type="video/mp4" muted class="vid" loop autoplay src="./media/anim/0001-0250.mp4"></video>
             <video type="video/mp4" muted class="vid" loop autoplay src="./media/anim/new.mp4"></video>
             <p>releção clara, enquanto menor a altura menor o deslocamento e menor a velocidade inicial</p></div>
-            <img style="position: absolute; height: 45%; top: 18rem; border-radius: 20px;" src="./media/WhatsApp Image 2024-12-11 at 23.39.50.jpeg" alt="">
         </div>
     </div>
 
@@ -387,6 +399,16 @@ Este tipo de movimento é frequentemente observado em diversas situações do co
                 entre a velocidade inicial e a final dividida pelo tempo. O ajuste dos dados foi feito utilizando um
                 modelo teórico de MRUR, que proporcionou uma relação linear entre o tempo e o deslocamento ao quadrado.
             </p>
+            <img style="border-radius: 20px;" src="./media/Screenshot 2024-12-12 221953.png" alt="">
+            <span class="function" style="border-radius: 10px; padding: 1rem; background-color: #001F3F; color: white; position: absolute; bottom: 10rem; left: 29%;">
+                y= 5.4712x-0.1151 <br>
+                R^2=0.9978
+
+                <p class="fun" style="position: absolute; top: -50vh; left:45vw;background-color:#001F3F; padding: 2rem; border-radius: 20px; width: 20rem;">Ao termos uma função linear com um coeficiente de correlação aproximadamente 1, podemos concluir empiricamente que o
+                movimento do corpo no plano horizontal é um movimento retilíneo uniformemente retardado. Assim, podemos perceber que a
+                Força de Atrito é constante. O gráfico é uma reta cujo declive, ao interpretar a equação v02 = 2a Δx , representa o 2a
+                que é 2 vezes a acelaração</p>
+            </span>
         </div>
     </div>
 
@@ -411,8 +433,8 @@ Este tipo de movimento é frequentemente observado em diversas situações do co
             <p>Os dados experimentais confirmam que a velocidade inicial tem uma influência direta sobre o deslocamento
                 em um MRUR, com maior velocidade inicial resultando em um deslocamento maior. Embora as condições
                 experimentais possam ter introduzido fontes de erro, as conclusões teóricas sobre o movimento retardado
-                foram validadas em grande parte pelos resultados obtidos. O experimento ilustra a aplicação de leis de
-                movimento em sistemas reais, como o estudo do atrito.</p>
+                foram validadas em grande parte pelos resultados obtidos que comprovam a existencia de tal relação entre a velocidade e a distância precorrida no plano horizontal. A experiencia ilustra a aplicação de leis de
+                movimento como forma de estudo da força de atrito.</p>
         </div>
     </div>
 
