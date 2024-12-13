@@ -110,83 +110,17 @@ main {
     bottom: .5rem;
 }
 
-.hidden {
-    display: none;
+li{
+    margin-left: 2rem;
 }
 
-.reveal-btn {
-    background-color: #0078d7;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
-.reveal-btn:hover {
-    background-color: #005a9e;
-}
-
-.answer {
-    margin-top: 5px;
-    color: #333;
-    font-style: italic;
-}
-
-.resumo {
-    overflow: hidden;
-    max-height: 50px;
-    /* Altura inicial compactada */
-    transition: max-height 0.5s ease-in-out;
-}
-
-.resumo.expanded {
-    max-height: 500px;
-    /* Altura suficiente para todas as perguntas */
-}
-
-.questions {
-    margin-top: 10px;
-}
-
-.main>div {
-    transition: all 0.5s ease;
+.intro:hover .a{
     opacity: 1;
+    transition: all .6s;
 }
 
-.main>div.hidden {
+.a{
     opacity: 0;
-    pointer-events: none;
-    /* Desativa interações em seções ocultas */
-    visibility: hidden;
-    height: 0;
-}
-
-.resumo {
-    transition: all 0.5s ease;
-    flex-grow: 1;
-    height: auto;
-    overflow: auto;
-}
-
-.resumo.fullscreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    /* Ocupa toda a altura da tela */
-    background: white;
-    z-index: 10;
-    overflow-y: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.questions {
-    margin-top: 20px;
-}
-
-.hidden-content {
-    display: none;
+    padding-top: 3rem;
+    margin-left: 3rem;
 }
